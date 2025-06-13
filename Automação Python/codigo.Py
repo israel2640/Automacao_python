@@ -23,13 +23,12 @@ time.sleep(1)
 pyautogui.click(x=580, y=405)
 pyautogui.write("israel@gmail.com")
 pyautogui.press("tab")
-pyautogui.write("123456789")
+pyautogui.write("MinhaSenhaSuperForte@1944")
 pyautogui.press("tab")
 pyautogui.press("enter")
 
 # Acessa a tela de cadastro
 time.sleep(1)
-pyautogui.click(x=850, y=359)
 pyautogui.click(x=622, y=312)
 
 # Caminho absoluto do CSV baseado na localização do script
