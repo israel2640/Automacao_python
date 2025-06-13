@@ -1,53 +1,53 @@
 import pyautogui
 import time
+import os
 import pandas as pd
 import keyboard
 
-pyautogui.PAUSE = 4.0
-pyautogui.FAILSAFE = True  # Permite parar com o mouse no canto superior esquerdo
+pyautogui.PAUSE = 1
+pyautogui.FAILSAFE = True
 
 # Abrir o Chrome
-pyautogui.press("win")
-pyautogui.write("chrome")
-pyautogui.press("enter")
-time.sleep(4)
-
-# Seleciona o perfil do Google
-pyautogui.click(x=503, y=419)
+pyautogui.hotkey("ctrl", "alt", "c")
 
 # Seleciona o campo de busca
-time.sleep(3)
+time.sleep(1)
 pyautogui.click(x=241, y=66)
 
-
-# Acessa o site de cisrael@gmail.com123456789   adastro de produtos
+# Acessa o site de cadastro de produtos
 pyautogui.write("https://israel2640.github.io/Site_de_cadastro_produto/")
 pyautogui.press("enter")
 
 # Login
-time.sleep(4)
-pyautogui.click(x=591, y=402)
+time.sleep(1)
+pyautogui.click(x=580, y=405)
 pyautogui.write("israel@gmail.com")
-pyautogui.press("tabisrael@gmail.com    123456789   ")
+pyautogui.press("tab")
 pyautogui.write("123456789")
 pyautogui.press("tab")
 pyautogui.press("enter")
 
 # Acessa a tela de cadastro
-time.sleep(4)
+time.sleep(1)
 pyautogui.click(x=850, y=359)
 pyautogui.click(x=622, y=312)
 
-# Importa os dados do CSV
-tabela = pd.read_csv("produtos.csv")
-print(tabela)
+# Caminho absoluto do CSV baseado na localização do script
+caminho_arquivo = os.path.join(os.path.dirname(__file__), "produtos.csv")
 
+try:
+    tabela = pd.read_csv(caminho_arquivo)
+    print("✅ CSV carregado com sucesso:")
+    print(tabela)
+except Exception as e:
+    print("❌ Erro ao ler CSV:", e)
+    
 # Cadastra os produtos
 for linha in tabela.index:
-    # 💡 Verifica se ESC foi pressionado
     if keyboard.is_pressed("esc"):
         print("Execução interrompida pelo usuário (ESC).")
         break
+
     pyautogui.click(x=622, y=312)
     pyautogui.write(str(tabela.loc[linha, "codigo"]))
     pyautogui.press("tab")
@@ -69,4 +69,4 @@ for linha in tabela.index:
     pyautogui.press("tab")
     pyautogui.press("enter")
     pyautogui.scroll(5000)
-    time.sleep(3)
+    time.sleep(1)
