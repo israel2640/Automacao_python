@@ -15,7 +15,7 @@ time.sleep(1)
 pyautogui.click(x=241, y=66)
 
 # Acessa o site de cadastro de produtos
-pyautogui.write("https://israel2640.github.io/Site_de_cadastro_produto/")
+pyautogui.write("https://israel2640.github.io/Automacao_python/")
 pyautogui.press("enter")
 
 # Login
